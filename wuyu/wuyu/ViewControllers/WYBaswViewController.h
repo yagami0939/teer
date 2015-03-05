@@ -1,5 +1,5 @@
 //
-//  WYTestViewController.h
+//  WYBaswViewController.h
 //  wuyu
 //
 //  Created by YAGAMI on 15/3/5.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WYBaswViewController.h"
-@interface WYTestViewController : WYBaswViewController
+
+@interface WYBaswViewController : UIViewController
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <RestKit.h>
+#import <AFNetworking.h>
 #import "WYRootTabBarController.h"
 @interface AppDelegate ()
 
@@ -22,6 +24,11 @@
     [self.window setRootViewController:[WYRootTabBarController new]];
     
     [self.window makeKeyAndVisible];
+    
+    AFHTTPClient *client = [[AFHTTPClient alloc]initWithBaseURL:[NSURL URLWithString:@"https://teer.teerapp.com/admin.php/app"]];
+    [[RKObjectManager sharedManager] setHTTPClient:client];
+    
+    
     return YES;
 }
 

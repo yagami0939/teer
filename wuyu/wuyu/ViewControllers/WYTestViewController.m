@@ -7,7 +7,8 @@
 //
 
 #import "WYTestViewController.h"
-
+#import <Masonry/Masonry.h>
+#import "WYApi.h"
 @implementation WYTestViewController
 
 
@@ -15,8 +16,29 @@
 {
     [super loadView];
     
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 20, 80, 20)];
+
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    UIButton *label = [[UIButton alloc]init];
     [self.view addSubview:label];
-    [label setText:[NSString stringWithFormat:@"%@",self]];
+    
+    
+    
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(50, 20, 50, 20));
+    }];
+    label.backgroundColor = [UIColor redColor];
+    [label setTitle:@"test" forState:UIControlStateNormal];
+    [label addTarget:self action:@selector(test:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)test:(id)sender
+{
+    [[WYApi sharedInstance] getHotActivities:nil page:0];
 }
 @end
